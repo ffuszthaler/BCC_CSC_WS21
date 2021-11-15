@@ -1,13 +1,12 @@
-let rockBtn = document.querySelector("#rockBtn");
-let paperBtn = document.querySelector("#paperBtn");
-let scissorsBtn = document.querySelector("#scissorsBtn");
-let lizardBtn = document.querySelector("#lizardBtn");
-let spockBtn = document.querySelector("#spockBtn");
+const rockBtn = document.querySelector("#rockBtn");
+const paperBtn = document.querySelector("#paperBtn");
+const scissorsBtn = document.querySelector("#scissorsBtn");
+const lizardBtn = document.querySelector("#lizardBtn");
+const spockBtn = document.querySelector("#spockBtn");
+const result = document.querySelector("#result");
+const userScoreP = document.querySelector("#userScore");
+const cpuScoreP = document.querySelector("#cpuScore");
 
-let result = document.querySelector("#result");
-
-let userScoreP = document.querySelector("#userScore");
-let cpuScoreP = document.querySelector("#cpuScore");
 let userScore = 0;
 let cpuScore = 0;
 
@@ -41,14 +40,16 @@ const cpuPlayer = () => {
 
   return randomPick;
 };
-let cpuPick = cpuPlayer();
+// let cpuPick = cpuPlayer();
 
 // User
-let handleUserInput = (pick) => {
+const handleUserInput = (pick) => {
   let userPick = pick;
 
   // Winner decision
-  makeDecision(userPick, cpuPick);
+  let newCpuPick = cpuPlayer();
+  makeDecision(userPick, newCpuPick);
+  console.log("new " + newCpuPick);
   return userPick;
 };
 
@@ -58,70 +59,63 @@ scissorsBtn.addEventListener("click", () => handleUserInput(scissorsBtn.value));
 lizardBtn.addEventListener("click", () => handleUserInput(lizardBtn.value));
 spockBtn.addEventListener("click", () => handleUserInput(spockBtn.value));
 
-// Execute on win
-let playerWin = () => {
+// Execute on player win
+const playerWin = () => {
   result.innerText = "Player won";
   userScore++;
   console.log("User Points: " + userScore);
   userScoreP.innerHTML = userScore;
-
-  // let newCpuPick = cpuPlayer();
-  // let newUserPick = handleUserInput();
-  // makeDecision(newUserPick, newCpuPick);
 };
 
-let cpuWin = () => {
-  result.innerText = "CPU chose " + cpuPick + " and won";
+// Execute on CPU win
+const cpuWin = (cpu) => {
+  result.innerText = "CPU chose " + cpu + " and won";
   cpuScore++;
   console.log("CPU Points: " + cpuScore);
   cpuScoreP.innerHTML = cpuScore;
-
-  // let newCpuPick = cpuPlayer();
-  // let newUserPick = handleUserInput();
-  // makeDecision(newUserPick, newCpuPick);
 };
 
 // Decide who won (I know)
-let makeDecision = (user, cpu) => {
+const makeDecision = (user, cpu) => {
   if (user === cpu) {
     result.innerText = "Tie";
   } else if (user === "Rock") {
     if (cpu === "Paper") {
-      cpuWin();
+      cpuWin(cpu);
     } else if (cpu === "Scissors") {
       playerWin();
     } else if (cpu === "Lizard") {
       playerWin();
     } else {
-      cpuWin();
+      cpuWin(cpu);
     }
   } else if (user === "Paper") {
     if (cpu === "Rock") {
       playerWin();
     } else if (cpu === "Scissors") {
-      cpuWin();
+      cpuWin(cpu);
     } else if (cpu === "Lizard") {
-      cpuWin();
+      cpuWin(cpu);
     } else {
       playerWin();
     }
   } else if (user === "Scissors") {
     if (cpu === "Rock") {
-      cpuWin();
+      cpuWin(cpu);
     } else if (cpu === "Paper") {
       playerWin();
     } else if (cpu === "Lizard") {
       playerWin();
     } else {
-      cpuWin();
+      cpuWin(cpu);
     }
   } else if (user === "Lizard") {
     if (cpu === "Rock") {
-      cpuWin();
+      cpuWin(cpu);
     } else if (cpu === "Paper") {
       playerWin();
     } else if (cpu === "Scissors") {
-      cpuWin();
+      cpuWin(cpu);
     } else {
       playerWin();
     }
@@ -129,11 +123,11 @@ let makeDecision = (user, cpu) => {
     if (cpu === "Rock") {
       playerWin();
     } else if (cpu === "Paper") {
-      cpuWin();
+      cpuWin(cpu);
     } else if (cpu === "Scissors") {
       playerWin();
     } else {
-      cpuWin();
+      cpuWin(cpu);
     }
   }
 };
