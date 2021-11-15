@@ -40,7 +40,6 @@ const cpuPlayer = () => {
 
   return randomPick;
 };
-// let cpuPick = cpuPlayer();
 
 // User
 const handleUserInput = (pick) => {
@@ -49,7 +48,7 @@ const handleUserInput = (pick) => {
   // Winner decision
   let newCpuPick = cpuPlayer();
   makeDecision(userPick, newCpuPick);
-  console.log("new " + newCpuPick);
+  console.log("new CPU Decision: " + newCpuPick);
   return userPick;
 };
 
