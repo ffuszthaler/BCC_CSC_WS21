@@ -6,6 +6,11 @@ let spockBtn = document.querySelector("#spockBtn");
 
 let result = document.querySelector("#result");
 
+let userScoreP = document.querySelector("#userScore");
+let cpuScoreP = document.querySelector("#cpuScore");
+let userScore = 0;
+let cpuScore = 0;
+
 // CPU
 const cpuPlayer = () => {
   let randomPickNumber = Math.floor(Math.random() * 5);
@@ -44,6 +49,7 @@ let handleUserInput = (pick) => {
 
   // Winner decision
   makeDecision(userPick, cpuPick);
+  return userPick;
 };
 
 rockBtn.addEventListener("click", () => handleUserInput(rockBtn.value));
@@ -52,79 +58,82 @@ scissorsBtn.addEventListener("click", () => handleUserInput(scissorsBtn.value));
 lizardBtn.addEventListener("click", () => handleUserInput(lizardBtn.value));
 spockBtn.addEventListener("click", () => handleUserInput(spockBtn.value));
 
-/*
- * This black magic works.
- * It is the mathematical representation of the game mechanics.
- */
-const evaluateWinner = function (player1, player2) {
-  let difference = player1 - player2;
-  if (difference < 0) {
-    difference += 5;
-  }
-  if (player1 === player2) {
-    tie();
-  } else {
-    if (difference % 2) {
-      playerWin();
-    } else {
-      cpuWin();
-    }
-  }
+// Execute on win
+let playerWin = () => {
+  result.innerText = "Player won";
+  userScore++;
+  console.log("User Points: " + userScore);
+  userScoreP.innerHTML = userScore;
+
+  // let newCpuPick = cpuPlayer();
+  // let newUserPick = handleUserInput();
+  // makeDecision(newUserPick, newCpuPick);
 };
 
-// Decide who won
+let cpuWin = () => {
+  result.innerText = "CPU chose " + cpuPick + " and won";
+  cpuScore++;
+  console.log("CPU Points: " + cpuScore);
+  cpuScoreP.innerHTML = cpuScore;
+
+  // let newCpuPick = cpuPlayer();
+  // let newUserPick = handleUserInput();
+  // makeDecision(newUserPick, newCpuPick);
+};
+
+// Decide who won (I know)
 let makeDecision = (user, cpu) => {
   if (user === cpu) {
     result.innerText = "Tie";
   } else if (user === "Rock") {
     if (cpu === "Paper") {
-      result.innerText = "You Lost";
+      cpuWin();
     } else if (cpu === "Scissors") {
-      result.innerText = "You Win";
+      playerWin();
     } else if (cpu === "Lizard") {
-      result.innerText = "You Win";
+      playerWin();
     } else {
-      result.innerText = "You Lost";
+      cpuWin();
     }
   } else if (user === "Paper") {
     if (cpu === "Rock") {
-      result.innerText = "You Win";
+      playerWin();
     } else if (cpu === "Scissors") {
-      result.innerText = "You Lost";
+      cpuWin();
     } else if (cpu === "Lizard") {
-      result.innerText = "You Lost";
+      cpuWin();
     } else {
-      result.innerText = "You Win";
+      playerWin();
     }
   } else if (user === "Scissors") {
     if (cpu === "Rock") {
-      result.innerText = "You Lost";
+      cpuWin();
     } else if (cpu === "Paper") {
-      result.innerText = "You Win";
+      playerWin();
     } else if (cpu === "Lizard") {
-      result.innerText = "You Win";
+      playerWin();
     } else {
-      result.innerText = "You Lost";
+      cpuWin();
     }
   } else if (user === "Lizard") {
     if (cpu === "Rock") {
-      result.innerText = "You Lost";
+      cpuWin();
     } else if (cpu === "Paper") {
-      result.innerText = "You Win";
+      playerWin();
     } else if (cpu === "Scissors") {
-      result.innerText = "You Lost";
+      cpuWin();
     } else {
-      result.innerText = "You Win";
+      playerWin();
     }
   } else if (user === "Spock") {
     if (cpu === "Rock") {
-      result.innerText = "You Win";
+      playerWin();
     } else if (cpu === "Paper") {
-      result.innerText = "You Lost";
+      cpuWin();
     } else if (cpu === "Scissors") {
-      result.innerText = "You Win";
+      playerWin();
     } else {
-      result.innerText = "You Lost";
+      cpuWin();
     }
   }
 };
