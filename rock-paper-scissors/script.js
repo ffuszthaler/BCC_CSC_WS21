@@ -10,6 +10,11 @@ const cpuScoreP = document.querySelector("#cpuScore");
 let userScore = 0;
 let cpuScore = 0;
 
+let winSound = new Audio("./audio/win.mp3");
+winSound.volume = 0.5;
+let lostSound = new Audio("./audio/lost.mp3");
+lostSound.volume = 0.5;
+
 // CPU
 const cpuPlayer = () => {
   let randomPickNumber = Math.floor(Math.random() * 5);
@@ -64,6 +69,7 @@ const playerWin = () => {
   userScore++;
   console.log("User Points: " + userScore);
   userScoreP.innerHTML = userScore;
+  winSound.play();
 };
 
 // Execute on CPU win
@@ -72,12 +78,14 @@ const cpuWin = (cpu) => {
   cpuScore++;
   console.log("CPU Points: " + cpuScore);
   cpuScoreP.innerHTML = cpuScore;
+  lostSound.play();
 };
 
 // Decide who won (I know)
 const makeDecision = (user, cpu) => {
   if (user === cpu) {
     result.innerText = "Tie";
+    lostSound.play();
   } else if (user === "Rock") {
     if (cpu === "Paper") {
       cpuWin(cpu);
