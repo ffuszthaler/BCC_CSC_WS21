@@ -2,4 +2,4 @@
 
 Game for university
 
-[Play Online](https://ffuszthaler.github.io/BCC_CSC_WS21/rock-paper-scissors/)
+[Play Rock Paper Scissors Lizard Spock](https://ffuszthaler.github.io/BCC_WS21/CSC/rock-paper-scissors/)
