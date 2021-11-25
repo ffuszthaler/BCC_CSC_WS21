@@ -1,0 +1,45 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #cccccc;
+}
+
+#header-img {
+  border: 1px solid black;
+  width: 700px;
+}
+
+#first-p {
+  font-weight: bold;
+}
+
+h1 {
+  color: brown;
+  font-size: 3rem;
+  padding: 20px;
+}
+
+h2 {
+  color: chocolate;
+  font-size: 2vh;
+}
+
+p {
+  text-align: justify;
+  line-height: 1.5em;
+  font-size: 120%;
+  padding: 5%;
+}
+
+a {
+  color: green;
+}
+
+ul {
+  font-size: 3em;
+}
+
+ul,
+li {
+  color: darkblue;
+  line-height: 1.5em;
+}

@@ -1,0 +1,13 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #cccccc;
+}
+
+#header-img {
+  border: 1px solid black;
+  width: 700px;
+}
+
+#first-p {
+  font-weight: bold;
+}

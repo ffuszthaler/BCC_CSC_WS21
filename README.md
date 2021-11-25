@@ -1,4 +1,4 @@
-# BCC_CSC_WS21
+# BCC_WS21
 
 Includes code written during the lectures and additional challenges.
 

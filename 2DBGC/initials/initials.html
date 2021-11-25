@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>initials</title>
+    <style>
+      body {
+        background-color: white;
+        font-family: sans-serif;
+        margin: 0;
+      }
+      #wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+      }
+      #chessCanvas {
+        background-color: white;
+        border-radius: 0.5rem;
+      }
+
+      #name {
+        margin-top: 10px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <canvas width="512" height="512" id="chessCanvas"></canvas>
+      <div id="name">Double F, I know, but I'm not dead yet.</div>
+    </div>
+    <script>
+      const canvas = document.querySelector("#chessCanvas");
+      const context = canvas.getContext("2d");
+      context.fillStyle = "#559DB3";
+      context.fillRect(0, 0, canvas.width, canvas.height);
+
+      // First F: Florian
+      let xFirst = 20;
+      let yFirst = 20;
+      let colorFirstF = "#E69D5A";
+
+      // Second F: Fussthaler/Fußthaler
+      let xSecond = 200;
+      let ySecond = 20;
+      let colorSecondF = "#A9B356";
+
+      // First F: Florian
+      context.beginPath();
+      context.moveTo(xFirst + 20, yFirst + 20);
+      context.lineTo(xFirst + 20, yFirst + 200);
+      context.moveTo(xFirst + 20, yFirst + 200);
+
+      context.lineTo(xFirst + 70, yFirst + 200);
+      context.moveTo(xFirst + 70, yFirst + 200);
+
+      context.lineTo(xFirst + 70, yFirst + 130);
+      context.moveTo(xFirst + 70, yFirst + 130);
+
+      context.lineTo(xFirst + 100, yFirst + 130);
+      context.moveTo(xFirst + 100, yFirst + 130);
+
+      context.lineTo(xFirst + 100, yFirst + 100);
+      context.moveTo(xFirst + 100, yFirst + 100);
+
+      context.lineTo(xFirst + 70, yFirst + 100);
+      context.moveTo(xFirst + 70, yFirst + 100);
+
+      context.lineTo(xFirst + 70, yFirst + 50);
+      context.moveTo(xFirst + 70, yFirst + 50);
+
+      context.lineTo(xFirst + 120, yFirst + 50);
+      context.moveTo(xFirst + 120, yFirst + 50);
+
+      context.lineTo(xFirst + 120, yFirst + 20);
+      context.moveTo(xFirst + 120, yFirst + 20);
+
+      context.lineTo(xFirst + 20, yFirst + 20);
+      context.moveTo(xFirst + 20, yFirst + 20);
+      context.strokeStyle = colorFirstF;
+      context.stroke();
+
+      // Filling the F
+      context.fillStyle = colorFirstF;
+      context.fillRect(xFirst + 20, yFirst + 20, xFirst + 30, yFirst + 160);
+
+      context.fillRect(xFirst + 70, yFirst + 100, xFirst + 10, yFirst + 10);
+
+      context.fillRect(xFirst + 70, yFirst + 20, xFirst + 30, yFirst + 10);
+      context.fill();
+      context.closePath();
+
+      // Second F: Fussthaler/Fußthaler
+      context.beginPath();
+      context.moveTo(xSecond + 20, ySecond + 20);
+      context.lineTo(xSecond + 20, ySecond + 200);
+      context.moveTo(xSecond + 20, ySecond + 200);
+
+      context.lineTo(xSecond + 70, ySecond + 200);
+      context.moveTo(xSecond + 70, ySecond + 200);
+
+      context.lineTo(xSecond + 70, ySecond + 130);
+      context.moveTo(xSecond + 70, ySecond + 130);
+
+      context.lineTo(xSecond + 100, ySecond + 130);
+      context.moveTo(xSecond + 100, ySecond + 130);
+
+      context.lineTo(xSecond + 100, ySecond + 100);
+      context.moveTo(xSecond + 100, ySecond + 100);
+
+      context.lineTo(xSecond + 70, ySecond + 100);
+      context.moveTo(xSecond + 70, ySecond + 100);
+
+      context.lineTo(xSecond + 70, ySecond + 50);
+      context.moveTo(xSecond + 70, ySecond + 50);
+
+      context.lineTo(xSecond + 120, ySecond + 50);
+      context.moveTo(xSecond + 120, ySecond + 50);
+
+      context.lineTo(xSecond + 120, ySecond + 20);
+      context.moveTo(xSecond + 120, ySecond + 20);
+
+      context.lineTo(xSecond + 20, ySecond + 20);
+      context.moveTo(xSecond + 20, ySecond + 20);
+      context.strokeStyle = colorSecondF;
+      context.stroke();
+
+      // Filling the F
+      context.fillStyle = colorSecondF;
+      context.fillRect(
+        xSecond + 20,
+        ySecond + 20,
+        xSecond - 150,
+        ySecond + 160
+      );
+
+      context.fillRect(
+        xSecond + 70,
+        ySecond + 100,
+        xSecond - 170,
+        ySecond + 10
+      );
+
+      context.fillRect(xSecond + 70, ySecond + 20, xSecond - 150, ySecond + 10);
+      context.fill();
+      context.closePath();
+
+      // ! Remove this
+      // canvas.addEventListener("mousemove", function (e) {
+      //   var cRect = canvas.getBoundingClientRect(); // Gets CSS pos, and width/height
+      //   var canvasX = Math.round(e.clientX - cRect.left); // Subtract the 'left' of the canvas
+      //   var canvasY = Math.round(e.clientY - cRect.top); // from the X/Y positions to make
+      //   context.clearRect(0, 0, canvas.width, canvas.height); // (0,0) the top left of the canvas
+      //   context.fillText("X: " + canvasX + ", Y: " + canvasY, 10, 20);
+      // });
+    </script>
+  </body>
+</html>

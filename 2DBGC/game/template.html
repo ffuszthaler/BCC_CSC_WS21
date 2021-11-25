@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2D Browser Game Coding: Template</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        background-color: #222531;
+        color: white;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0%;
+      }
+
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        gap: 12px;
+      }
+
+      #canvas {
+        background-color: white;
+
+        /* not necessary because of the width and height attribute in the html */
+        width: 600px;
+        height: 600px;
+      }
+
+      .name {
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <canvas id="canvas" width="600" height="600"></canvas>
+      <div class="name">why are you reading this?</div>
+    </div>
+
+    <script>
+      let canvas = document.getElementById("canvas");
+      let context = canvas.getContext("2d");
+
+      context.beginPath();
+      context.moveTo(30, 30);
+      context.lineTo(100, 100);
+      context.lineTo(300, 100);
+      context.closePath(); // closes first and last point of shape
+
+      // fill shape
+      context.fillStyle = "green";
+      context.fill();
+
+      // stroke
+      context.strokeStyle = "#00f";
+      context.lineWidth = 15;
+      context.stroke();
+
+      context.beginPath(); // implicitly closes a previous path
+      context.strokeStyle = "red";
+      context.moveTo(50, 300);
+      context.lineTo(30, 500);
+      context.stroke();
+
+      // rectangle
+      context.beginPath();
+      context.strokeStyle = "black";
+      context.strokeRect(200, 200, 100, 200);
+      context.fillStyle = "orange";
+      context.fillRect(200, 200, 100, 200);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>chess_board</title>
+    <style>
+      body {
+        background: linear-gradient(45deg, #ddc2ea, #975fb3);
+        font-family: sans-serif;
+        margin: 0;
+      }
+      #wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #name {
+        margin-top: 10px;
+        color: white;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <canvas width="512" height="512" id="chessCanvas"></canvas>
+      <div id="name">This is a chessboard, look at it - it's beautiful</div>
+    </div>
+    <script>
+      const canvas = document.querySelector("#chessCanvas");
+      const context = canvas.getContext("2d");
+
+      let color1 = "#C27AE6";
+      let color2 = "#605566";
+
+      context.fillStyle = color1;
+      context.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+
+      context.fillStyle = color2;
+
+      let chessSquareSide = canvas.clientWidth / 10;
+      for (let row = 0; row < 10; row++) {
+        for (let col = row % 2; col < 10; col += 2) {
+          context.fillRect(
+            col * chessSquareSide,
+            row * chessSquareSide,
+            chessSquareSide,
+            chessSquareSide
+          );
+        }
+      }
+    </script>
+  </body>
+</html>
