@@ -1,0 +1,126 @@
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #292929;
+  color: #d3d3d3;
+}
+
+#center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+input {
+  margin: 20px;
+}
+
+label {
+  padding: 10px;
+  background-color: #333333;
+}
+
+#chapterImg {
+  margin: 10px 10px 10px 0;
+  display: flex;
+  width: 50%;
+  height: auto;
+}
+
+/*
+    FROM: https://getcssscan.com/css-buttons-examples
+*/
+
+#startGameButton {
+  align-items: center;
+  background-color: #333333;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #d3d3d3;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+#startGameButton:hover,
+#startGameButton:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: white;
+}
+
+#startGameButton:hover {
+  transform: translateY(-1px);
+}
+
+#startGameButton:active {
+  background-color: #4d4c4c;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: white;
+  transform: translateY(0);
+}
+
+#submitButton {
+  align-items: center;
+  background-color: #333333;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #d3d3d3;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+#submitButton:hover,
+#submitButton:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: white;
+}
+
+#submitButton:hover {
+  transform: translateY(-1px);
+}
+
+#submitButton:active {
+  background-color: #4d4c4c;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: white;
+  transform: translateY(0);
+}
