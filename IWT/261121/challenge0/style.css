@@ -1,3 +1,8 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #cccccc;
@@ -12,12 +17,8 @@ body {
   font-weight: bold;
 }
 
-main {
-  width: 700px;
-  margin: 0 auto;
-}
-
 #wrapper {
+  margin: 0 auto;
   background-color: white;
   padding: 15px;
   display: flex;
@@ -49,10 +50,7 @@ footer > a {
   color: blue;
 }
 
-h1 {
-  color: darkgoldenrod;
-}
-
+h1,
 h2 {
   color: darkgoldenrod;
 }
