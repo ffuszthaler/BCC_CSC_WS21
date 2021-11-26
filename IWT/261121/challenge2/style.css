@@ -1,0 +1,59 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.header {
+  background: lightgreen;
+  flex: 100%;
+}
+.footer {
+  background: lightsteelblue;
+  flex: 100%;
+}
+.main {
+  text-align: left;
+  background: dodgerblue;
+}
+.aside-1 {
+  background: goldenrod;
+}
+.aside-2 {
+  background: lightcoral;
+}
+@media all and (min-width: 600px) {
+  .wrapper {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .aside-1 {
+    flex: 50%;
+  }
+
+  .aside-2 {
+    flex: 50%;
+  }
+}
+@media all and (min-width: 800px) {
+  .main {
+    flex: 50%;
+  }
+
+  .aside-1 {
+    flex: 25%;
+    order: -1;
+  }
+
+  .aside-2 {
+    flex: 25%;
+  }
+
+  .header {
+    order: -1;
+  }
+}
+body {
+  padding: 2em;
+  font-family: sans-serif;
+}
