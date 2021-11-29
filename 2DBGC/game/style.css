@@ -1,0 +1,22 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(45deg, #e66465, #9198e5);
+  margin: 0;
+}
+
+canvas {
+  background-color: white;
+  /* border-radius: 0.5rem; */
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#subtitle {
+  margin-top: 10px;
+}

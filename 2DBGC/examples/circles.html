@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>circles</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(45deg, #e66465, #9198e5);
+        margin: 0;
+      }
+
+      canvas {
+        background-color: white;
+        border-radius: 0.5rem;
+      }
+
+      #wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      #subtitle {
+        font-weight: bold;
+        color: white;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <canvas width="600" height="600" id="canvas"></canvas>
+      <div id="subtitle">Look at the way it renders, very distinguished</div>
+    </div>
+
+    <script>
+      const canvas = document.querySelector("canvas");
+      const context = canvas.getContext("2d");
+
+      // Convert degrees to radians
+      const degreesToRadians = (degrees) => (degrees * Math.PI) / 180;
+
+      // red quarter circle
+      context.beginPath();
+      context.arc(300, 300, 150, Math.PI / 2, Math.PI);
+      context.strokeStyle = "red";
+      context.lineWidth = 10;
+      context.stroke();
+
+      // purple half ellipse
+      context.beginPath();
+      context.ellipse(
+        400,
+        200,
+        200,
+        100,
+        degreesToRadians(15),
+        0,
+        degreesToRadians(180),
+        true
+      );
+      context.strokeStyle = "rebeccapurple";
+      context.stroke();
+
+      // text
+      // context.font = "bold 20px sans-serif";
+      // context.fillText("Hello 2D Browser Game Coding", 100, 500);
+
+      // name
+      context.font = "bold 188px serif";
+      context.fillText("Florian", 0, 590);
+      context.lineWidth = 1;
+      context.strokeStyle = "grey";
+      context.strokeText("Florian", 5, 595);
+    </script>
+  </body>
+</html>

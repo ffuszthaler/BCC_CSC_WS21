@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>transform</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(45deg, #e66465, #9198e5);
+        margin: 0;
+      }
+
+      canvas {
+        background-color: white;
+        border-radius: 0.5rem;
+      }
+
+      #wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      #subtitle {
+        font-weight: bold;
+        color: white;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <canvas width="600" height="600" id="canvas"></canvas>
+      <div id="subtitle">Look at the way it renders, very distinguished</div>
+    </div>
+
+    <script>
+      const canvas = document.querySelector("canvas");
+      const context = canvas.getContext("2d");
+
+      // context.translate(150, 150);
+      // context.rotate((30 * Math.PI) / 180);
+
+      // context.fillRect(-100, -100, 200, 200);
+
+      // context.resetTransform();
+      // context.scale(1, 2);
+
+      // context.fillStyle = "green";
+      // context.fillRect(20, 20, 100, 100);
+
+      context.beginPath();
+      context.resetTransform();
+      context.translate(150, 150);
+      context.arc(0, 0, 20, 0, 2 * Math.PI);
+      context.lineWidth = 10;
+      context.fill();
+
+      context.beginPath();
+      context.resetTransform();
+      context.translate(450, 150);
+      context.arc(0, 0, 20, 0, 2 * Math.PI);
+      context.fill();
+
+      context.beginPath();
+      context.resetTransform();
+      context.translate(300, 350);
+      context.ellipse(0, 0, 200, 100, 0, 0, Math.PI);
+      context.stroke();
+    </script>
+  </body>
+</html>

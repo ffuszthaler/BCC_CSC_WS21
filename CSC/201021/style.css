@@ -1,0 +1,16 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #222531;
+    color: white;
+}
+
+#console {
+    width: 70%;
+    height: 500px;
+    background-color: white;
+    color: black;
+    border: black dashed 2px;
+    padding: 10px 10px;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}

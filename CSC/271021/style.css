@@ -1,0 +1,18 @@
+body {
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #222531;
+    margin: 0;
+}
+
+.center {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#weekday {
+    color: #fffd01;
+    font-weight: bolder;
+}
