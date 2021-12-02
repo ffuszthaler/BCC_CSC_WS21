@@ -1,8 +1,9 @@
+import Player from "./Player.js";
+
 // global variables
 let context;
-let ticks = 0;
-let x = 0;
 let lastTickTimestamp;
+let player;
 
 // config object
 const CONFIG = {
@@ -19,26 +20,39 @@ const init = () => {
   canvas.setAttribute("width", CONFIG.width);
   canvas.setAttribute("height", CONFIG.height);
 
+  // our player
+  player = new Player(context, 100, 100, CONFIG);
+
   // time since start of script execution
   lastTickTimestamp = performance.now();
-  render();
+
+  gameLoop();
 };
 
-// renders to canvas
+const update = (timePassedSinceLastRender) => {
+  // update our player
+  player.update(timePassedSinceLastRender);
+};
+
+// renders to the canvas
 const render = () => {
-  let timePassedSinceLastRender = performance.now() - lastTickTimestamp;
-  window.timePassedSinceLastRender = timePassedSinceLastRender;
-
-  x = x + timePassedSinceLastRender / 4;
-
+  // clear the canvas
   context.resetTransform();
   context.clearRect(0, 0, CONFIG.width, CONFIG.height);
-  context.translate(x, 0);
-  context.fillRect(0, 0, 50, 50);
 
-  ticks++;
+  // render our player
+  player.render();
+};
+
+// main game loop
+const gameLoop = () => {
+  let timePassedSinceLastRender = performance.now() - lastTickTimestamp;
+
+  update(timePassedSinceLastRender);
+  render();
+
   lastTickTimestamp = performance.now();
-  requestAnimationFrame(render);
+  requestAnimationFrame(gameLoop);
 };
 
 // execute init() on page load
