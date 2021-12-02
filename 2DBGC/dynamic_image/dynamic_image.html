@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Images</title>
+
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(45deg, #e66465, #9198e5);
+        margin: 0;
+      }
+
+      canvas {
+        background-color: white;
+        border-radius: 0.5rem;
+      }
+
+      #wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      #subtitle {
+        font-weight: bold;
+        color: white;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <canvas></canvas>
+      <div id="subtitle">🕹2D Browser Game Coding:</div>
+    </div>
+
+    <script>
+      // random values for shapes
+      let context;
+      let posXArc = Math.floor(Math.random() * 600);
+      let posYArc = Math.floor(Math.random() * 600);
+
+      let posXRect = Math.floor(Math.random() * 600);
+      let posYRect = Math.floor(Math.random() * 600);
+
+      let posXTri = Math.floor(Math.random() * 600);
+      let posYTri = Math.floor(Math.random() * 600);
+
+      // returns random number between two extreme values
+      let randomNumberBetween = (minRandomNumber, maxRandomNumber) => {
+        return Math.floor(
+          Math.random() * (maxRandomNumber - minRandomNumber + 1) +
+            minRandomNumber
+        );
+      };
+
+      // get you a random rgba color value
+      let getRandomColor = () => {
+        let randomRed = randomNumberBetween(0, 255);
+        let randomGreen = randomNumberBetween(0, 255);
+        let randomBlue = randomNumberBetween(0, 255);
+        let randomAlpha = (Math.random() + 0.3).toFixed(2);
+
+        return `rgba(${randomRed}, ${randomGreen}, ${randomBlue}, ${randomAlpha})`;
+      };
+
+      // config object
+      const CONFIG = {
+        width: 800,
+        height: 800,
+      };
+
+      // renders the shapes
+      const render = (timestamp) => {
+        context.resetTransform();
+        context.translate(posXArc, posYArc);
+        context.beginPath();
+        context.arc(0, 0, 30, 0, 2 * Math.PI);
+        context.fillStyle = getRandomColor();
+        context.stroke();
+        context.fill();
+
+        context.resetTransform();
+        context.translate(posXTri, posXTri);
+        context.beginPath();
+        context.moveTo(20, 140);
+        context.lineTo(120, 10);
+        context.lineTo(220, 140);
+        context.closePath();
+        context.stroke();
+        context.fill();
+
+        context.resetTransform();
+        context.translate(posXRect, posYRect);
+        context.strokeRect(0, 0, 100, 100);
+        context.fillRect(0, 0, 100, 100);
+        context.fillRect = getRandomColor();
+        context.stroke();
+        context.fill();
+      };
+
+      // initializes the whole thing
+      const init = () => {
+        let canvas = document.querySelector("canvas");
+        context = canvas.getContext("2d");
+
+        canvas.setAttribute("width", CONFIG.width);
+        canvas.setAttribute("height", CONFIG.height);
+        lastTickTimestamp = performance.now();
+        render();
+      };
+
+      window.addEventListener("load", () => {
+        init();
+      });
+    </script>
+  </body>
+</html>

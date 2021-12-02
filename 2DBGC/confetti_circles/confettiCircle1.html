@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confetti Circle 1</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(45deg, #e66465, #9198e5);
+        margin: 0;
+      }
+
+      canvas {
+        background-color: white;
+        border-radius: 0.5rem;
+      }
+
+      #wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      #subtitle {
+        font-weight: bold;
+        color: white;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <canvas width="512" height="512"></canvas>
+      <div id="subtitle">Confetti Circle 1</div>
+    </div>
+    <script>
+      // config
+      const largerCircleRadius = 180;
+      const smallerCircleRadius = 60;
+      const angularVelocity = 0.05;
+
+      // globals
+      let currentAngle = 0;
+      let ticks;
+      let context;
+      let canvas;
+
+      // returns random number between two extreme values
+      let randomNumberBetween = (minRandomNumber, maxRandomNumber) => {
+        return Math.floor(
+          Math.random() * (maxRandomNumber - minRandomNumber + 1) +
+            minRandomNumber
+        );
+      };
+
+      // get you a random rgba color value
+      let getRandomColor = () => {
+        let randomRed = randomNumberBetween(0, 255);
+        let randomGreen = randomNumberBetween(0, 255);
+        let randomBlue = randomNumberBetween(0, 255);
+        let randomAlpha = (Math.random() + 0.3).toFixed(2);
+
+        return `rgba(${randomRed}, ${randomGreen}, ${randomBlue}, ${randomAlpha})`;
+      };
+
+      // runs every possible frame
+      const update = () => {
+        ticks++;
+
+        currentAngle += angularVelocity % (Math.PI * 2);
+        context.fillStyle = getRandomColor();
+
+        const x =
+          canvas.clientWidth / 2 + largerCircleRadius * Math.cos(currentAngle);
+
+        const y =
+          canvas.clientHeight / 2 - largerCircleRadius * Math.sin(currentAngle);
+
+        context.beginPath();
+        context.arc(x, y, smallerCircleRadius, 0, Math.PI * 2);
+        context.fill();
+        context.closePath();
+
+        requestAnimationFrame(update);
+      };
+
+      // initializes the whole thing
+      const init = () => {
+        canvas = document.querySelector("canvas");
+        context = canvas.getContext("2d");
+        ticks = 0;
+
+        requestAnimationFrame(update);
+      };
+
+      window.addEventListener("load", () => {
+        init();
+      });
+    </script>
+  </body>
+</html>
