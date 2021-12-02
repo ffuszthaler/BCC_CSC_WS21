@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+@keyframes siren {
+  0% {
+    background-color: red;
+  }
+  100% {
+    background-color: blue;
+  }
+}
+
+body {
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px; */
+  animation: siren 2s infinite alternate;
+}
+
+@keyframes ambulance {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+img {
+  margin-top: 35%;
+  width: 25%;
+  height: auto;
+  position: relative;
+  animation: ambulance 5s infinite ease-in-out;
+}
