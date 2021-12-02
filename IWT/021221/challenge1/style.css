@@ -31,9 +31,69 @@ body {
 }
 
 img {
-  margin-top: 35%;
+  /* margin-top: 35%; */
   width: 25%;
   height: auto;
-  position: relative;
+  position: absolute;
   animation: ambulance 5s infinite ease-in-out;
+}
+
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+  @keyframes ambulance {
+    0% {
+      top: 0%;
+      left: 0%;
+    }
+    100% {
+      top: 100%;
+      left: 100%;
+    }
+  }
+
+  img {
+    width: 25%;
+    height: auto;
+    position: absolute;
+    animation: ambulance 5s infinite ease-in-out;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 800px) {
+  @keyframes ambulance {
+    0% {
+      top: 100%;
+      left: 100%;
+    }
+    100% {
+      top: 0%;
+      left: 0%;
+    }
+  }
+
+  img {
+    width: 25%;
+    height: auto;
+    position: absolute;
+    animation: ambulance 5s infinite ease-in-out;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+  @keyframes ambulance {
+    0% {
+      top: 0%;
+      left: 100%;
+    }
+    100% {
+      top: 100%;
+      left: 0%;
+    }
+  }
+
+  img {
+    width: 25%;
+    height: auto;
+    position: absolute;
+    animation: ambulance 5s infinite ease-in-out;
+  }
 }
