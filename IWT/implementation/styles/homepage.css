@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* ///////////////////////////// */
+
+/* Navbar */
+.navbar {
+  align-items: center;
+  display: flex;
+  list-style-type: none;
+  margin: 1vh 3vw;
+  padding: 0 5px;
+}
+
+.navbar_item_left {
+  margin-right: auto;
+}
+
+.logo {
+  color: #000000;
+  font-weight: bold;
+  font-size: 2em;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: #222222;
+  text-shadow: 2px 2px 35px #222222;
+}
+
+.navbar_item_wrapper {
+  margin: auto;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar_item {
+  margin: 5em;
+}
+
+.item {
+  color: #000000;
+  font-weight: lighter;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+.item:hover {
+  color: #444444;
+  text-shadow: 2px 2px 20px #222222;
+}
+
+.search_bar {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin-top: 5px;
+  padding: 5px 20px;
+  border-radius: 25px;
+}
+/* ///////////////////////////// */
+
+/* Hero Banner */
+.hero {
+  margin: 3vw;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.hero_cover {
+  height: 20vw;
+  border-radius: 10px;
+  width: 100%;
+  font-style: italic;
+  color: #a9a9a9;
+  font-weight: lighter;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.hero_cover:hover {
+  background-color: #d4d4d4;
+}
+
+.hero_content {
+  flex: 1;
+  padding: 0 5px;
+  font-size: 1.8em;
+  font-style: italic;
+  font-weight: lighter;
+}
+
+.hero_heading {
+  font-weight: lighter;
+  font-size: 1.2em;
+  font-style: italic;
+}
+/* ///////////////////////////// */
+
+/* Recently Added */
+.recent_heading {
+  margin: 0 3vw;
+  font-weight: lighter;
+  font-size: 1em;
+}
+.breadcrumb {
+  margin: 1vw 3vw;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.breadcrumb_item {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 5px 30px;
+  color: #000000;
+  text-decoration: none;
+  font-weight: lighter;
+  font-size: 1.1em;
+  margin: 5px 0;
+}
+
+.breadcrumb_item:hover {
+  background-color: #d4d4d4;
+}
+
+.breadcrumb_separator {
+  margin: 0 2vw;
+  color: #a9a9a9;
+}
+/* ///////////////////////////// */
+
+/* Recent Seasons */
+.recent_seasons_wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 3vw 3vw;
+}
+
+.season_column {
+  /* padding-bottom: 5vh; */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  margin: 0 15px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.season_heading {
+  font-weight: lighter;
+  font-size: 2em;
+  text-align: center;
+}
+
+.season_info {
+  font-weight: lighter;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.season_info_text {
+  padding: 0 15px 15px 15px;
+}
+
+.season_column_link {
+  text-decoration: none;
+  font-weight: lighter;
+  color: #000000;
+  padding: 5px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.season_column_link:hover {
+  background-color: #d4d4d4;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+/* ///////////////////////////// */
+
+/* Footer */
+.footer_container {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  font-weight: lighter;
+  color: #000000;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
