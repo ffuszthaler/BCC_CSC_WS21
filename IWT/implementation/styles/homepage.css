@@ -28,9 +28,18 @@ body {
   text-decoration: none;
 }
 
+.i_logo {
+  color: #97ce4c;
+}
+
+.morty_logo {
+  text-decoration: underline;
+}
+
 .logo:hover {
-  color: #222222;
-  text-shadow: 2px 2px 35px #222222;
+  color: #000000;
+  /* text-shadow: 2px 2px 35px #222222; */
+  text-shadow: 2px 2px 20px #97ce4c;
 }
 
 .navbar_item_wrapper {
@@ -53,7 +62,7 @@ body {
 
 .item:hover {
   color: #444444;
-  text-shadow: 2px 2px 20px #222222;
+  text-shadow: 2px 2px 20px #97ce4c;
 }
 
 .search_bar {
@@ -75,17 +84,18 @@ body {
 
 .hero_cover {
   height: 20vw;
-  border-radius: 10px;
   width: 100%;
+  border-radius: 10px;
   font-style: italic;
   color: #a9a9a9;
   font-weight: lighter;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   text-align: center;
+  overflow: hidden;
 }
 
-.hero_cover:hover {
-  background-color: #d4d4d4;
+.hero_img {
+  filter: brightness(50%);
 }
 
 .hero_content {
@@ -201,4 +211,5 @@ body {
   color: #000000;
   border-top: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  background-color: #ffffff;
 }
