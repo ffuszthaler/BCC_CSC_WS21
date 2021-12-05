@@ -32,13 +32,12 @@ body {
   color: #97ce4c;
 }
 
-.morty_logo {
+.morty_logo:hover {
   text-decoration: underline;
 }
 
 .logo:hover {
   color: #000000;
-  /* text-shadow: 2px 2px 35px #222222; */
   text-shadow: 2px 2px 20px #97ce4c;
 }
 
@@ -63,6 +62,7 @@ body {
 .item:hover {
   color: #444444;
   text-shadow: 2px 2px 20px #97ce4c;
+  text-decoration: underline;
 }
 
 .search_bar {
@@ -139,7 +139,10 @@ body {
 }
 
 .breadcrumb_item:hover {
-  background-color: #d4d4d4;
+  color: #ffffff;
+  background-color: #97ce4c;
+  border-color: #97ce4c;
+  box-shadow: 2px 2px 20px #97ce4c;
 }
 
 .breadcrumb_separator {
@@ -153,7 +156,7 @@ body {
   align-items: center;
   display: flex;
   justify-content: center;
-  margin: 3vw 3vw;
+  margin: 2.5vw 3vw;
 }
 
 .season_column {
@@ -167,6 +170,10 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 }
+.season_column:hover {
+  box-shadow: 2px 2px 20px #97ce4c;
+  border-color: #97ce4c;
+}
 
 .season_heading {
   font-weight: lighter;
@@ -177,7 +184,6 @@ body {
 .season_info {
   font-weight: lighter;
   width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .season_info_text {
@@ -194,7 +200,8 @@ body {
 }
 
 .season_column_link:hover {
-  background-color: #d4d4d4;
+  color: #ffffff;
+  background-color: #97ce4c;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
