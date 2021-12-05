@@ -1,7 +1,8 @@
 # Implementation for IWT
 
-- [x] maybe change banner image
 - [x] Rest of Pages (1/5)
+- [x] maybe change banner image
+- [x] Favicon?
 - [x] Mobile?
 - [x] Animations?
 - [x] Image compression?
