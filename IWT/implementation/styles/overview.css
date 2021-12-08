@@ -77,113 +77,60 @@ body {
 }
 /* ///////////////////////////// */
 
-/* Hero Banner */
-.profile {
-  margin: 3vw;
-  display: flex;
-  flex-direction: row;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-}
-
-.profile:hover {
-  box-shadow: 2px 2px 20px #97ce4c;
-}
-
-.profile_cover {
-  height: auto;
-  /* width: 100%; */
-  border-radius: 10px;
-  font-style: italic;
-  color: #a9a9a9;
-  font-weight: lighter;
-  border-right: 1px solid rgba(0, 0, 0, 0.3);
-  text-align: center;
-  overflow: hidden;
-  object-fit: contain;
-}
-
-.profile_content {
-  flex: 1;
-  padding: 0 5px;
-
-  padding-left: 20px;
-}
-
-.profile_heading {
-  font-weight: lighter;
-  font-size: 1.8em;
-  font-weight: 500;
-}
-
-.profile_text {
-  font-size: 1em;
-  padding-top: 10px;
-}
-
-.profile_facts_heading {
-  font-weight: lighter;
-  font-size: 1.8em;
-  padding-top: 40px;
-  font-weight: 500;
-}
-.profile_facts {
-  font-size: 1em;
-  list-style: none;
-}
-
-.profile_facts > li {
-  font-size: 1em;
-  padding-top: 10px;
-  list-style: none;
-  font-style: italic;
-}
-/* ///////////////////////////// */
-
 /* Feed */
-.feed_heading {
+.ow_heading {
   margin: 0 3vw;
   font-weight: lighter;
   font-size: 1.8em;
 }
 
-.feed_wrapper {
+.ow_wrapper {
   align-items: center;
   display: flex;
   justify-content: center;
   margin: 2.5vw 3vw;
 }
 
-.feed_column {
-  /* padding-bottom: 5vh; */
+.ow_column {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex: 1;
   margin: 0 15px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  overflow: hidden;
+  padding-top: 4vh;
 }
-.feed_column:hover {
-  box-shadow: 2px 2px 20px #97ce4c;
+.ow_column:hover {
   border-color: #97ce4c;
 }
 
-.feed_inner_heading {
+.ow_inner_heading {
   font-weight: lighter;
   font-size: 2em;
   padding-left: 10px;
   font-style: italic;
+  text-align: center;
 }
 
-.feed_info {
+.ow_info {
   font-weight: lighter;
   width: 100%;
 }
 
-.feed_info_text {
+.ow_info_text {
   padding: 20px 15px 15px 15px;
+}
+
+.ow_img {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.ow_img:hover {
+  box-shadow: 2px 2px 20px #97ce4c;
+  border-color: #97ce4c;
 }
 
 /* ///////////////////////////// */
