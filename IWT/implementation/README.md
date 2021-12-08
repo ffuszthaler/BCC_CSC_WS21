@@ -1,6 +1,6 @@
 # Implementation for IWT
 
-- [x] Rest of Pages (3/5)
+- [x] Rest of Pages (4/5)
 - [x] Clean up code
 - [x] maybe change banner image
 - [x] Favicon?
