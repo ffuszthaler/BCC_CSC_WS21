@@ -30,18 +30,18 @@ class Player {
   }
 
   init() {
-    document.addEventListener("keydown", (e) => {
+    document.addEventListener('keydown', (e) => {
       e.preventDefault();
       this.currentKeys[e.code] = true;
     });
 
-    document.addEventListener("keyup", (e) => {
+    document.addEventListener('keyup', (e) => {
       this.currentKeys[e.code] = false;
     });
 
     // load player image
     this.playerImg = new Image();
-    this.playerImg.src = "./assets/run-still.png";
+    this.playerImg.src = './assets/run-still.png';
   }
 
   render() {
@@ -59,17 +59,17 @@ class Player {
   }
 
   update(timePassedSinceLastRender) {
-    if (this.currentKeys["ArrowUp"] === true || this.currentKeys["KeyW"] === true) {
+    if (this.currentKeys['ArrowUp'] === true || this.currentKeys['KeyW'] === true) {
       this.dy = -1;
-    } else if (this.currentKeys["ArrowDown"] === true || this.currentKeys["KeyS"] === true) {
+    } else if (this.currentKeys['ArrowDown'] === true || this.currentKeys['KeyS'] === true) {
       this.dy = 1;
     } else {
       this.dy = 0;
     }
 
-    if (this.currentKeys["ArrowLeft"] === true || this.currentKeys["KeyA"] === true) {
+    if (this.currentKeys['ArrowLeft'] === true || this.currentKeys['KeyA'] === true) {
       this.dx = -1;
-    } else if (this.currentKeys["ArrowRight"] === true || this.currentKeys["KeyD"] === true) {
+    } else if (this.currentKeys['ArrowRight'] === true || this.currentKeys['KeyD'] === true) {
       this.dx = 1;
     } else {
       this.dx = 0;

@@ -1,4 +1,4 @@
-import Player from "./Player.js";
+import Player from './Player.js';
 
 // global variables
 let context;
@@ -13,12 +13,12 @@ const CONFIG = {
 
 // initializes game, canvas, ...
 const init = () => {
-  let canvas = document.querySelector("canvas");
-  context = canvas.getContext("2d");
+  let canvas = document.querySelector('canvas');
+  context = canvas.getContext('2d');
 
   // size canvas according to config
-  canvas.setAttribute("width", CONFIG.width);
-  canvas.setAttribute("height", CONFIG.height);
+  canvas.setAttribute('width', CONFIG.width);
+  canvas.setAttribute('height', CONFIG.height);
 
   // our player
   player = new Player(context, 100, 100, CONFIG);
@@ -56,6 +56,6 @@ const gameLoop = () => {
 };
 
 // execute init() on page load
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   init();
 });
