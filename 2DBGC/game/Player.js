@@ -1,36 +1,26 @@
-class Player {
-  constructor(context, x, y, config) {
-    // canvas context
-    this.context = context;
+import GameObject from './GameObject.js';
 
-    // canvas config
-    this.config = config;
-    // position
-    this.x = x;
-    this.y = y;
+class Player extends GameObject {
+  constructor(context, x, y, width, height, CONFIG) {
+    super(context, x, y, width, height, CONFIG);
 
     // movement direction
     this.dx = 0;
     this.dy = 0;
 
     // player movement speed multiplier
-    this.velocity = 0.2;
-
-    // texture size
-    this.width = 100;
-    this.height = 100;
+    this.velocity = 0.3;
 
     // last direction the player looked
     this.lastDirection = 1;
 
     // saves all currently pressed keys
     this.currentKeys = {};
-
-    this.init();
   }
 
   init() {
     document.addEventListener('keydown', (e) => {
+      // prevents scrolling
       e.preventDefault();
       this.currentKeys[e.code] = true;
     });
@@ -42,20 +32,6 @@ class Player {
     // load player image
     this.playerImg = new Image();
     this.playerImg.src = './assets/run-still.png';
-  }
-
-  render() {
-    // reset any remaining transform call
-    this.context.resetTransform();
-
-    // move canvas origin to x and y
-    this.context.translate(this.x, this.y);
-
-    // rotate sprite based on direction
-    this.context.scale(this.lastDirection, 1);
-
-    // draw player
-    this.context.drawImage(this.playerImg, -this.width / 2, -this.height / 2, this.width, this.height);
   }
 
   update(timePassedSinceLastRender) {
@@ -79,14 +55,35 @@ class Player {
     if (this.dx != 0) this.lastDirection = this.dx;
 
     // bounds detection
-    if (this.x <= this.width / 2) this.x = this.width / 2 + 1;
-    if (this.y <= this.height / 2) this.y = this.height / 2 + 1;
-    if (this.y >= this.config.height - this.height / 2) this.y = this.config.height - this.height / 2 - 1;
-    if (this.x >= this.config.width - this.width / 2) this.x = this.config.width - this.width / 2 - 1;
+    // right
+    if (this.x + this.width / 2 > this.CONFIG.width) this.x = this.CONFIG.width - this.width / 2;
+    // left
+    else if (this.x - this.width / 2 < 0) this.x = 0 + this.width / 2;
+    // if (this.x < this.width / 2) this.x = this.width / 2; // left
+
+    // bottom
+    if (this.y + this.height / 2 > this.CONFIG.height) this.y = this.CONFIG.height - this.height / 2;
+    // top
+    else if (this.y - this.height / 2 < 0) this.y = 0 + this.height / 2;
+    // if (this.y < this.height / 2) this.y = this.height / 2; // top
 
     // calculate new position
     this.x += timePassedSinceLastRender * this.dx * this.velocity;
     this.y += timePassedSinceLastRender * this.dy * this.velocity;
+  }
+
+  render() {
+    // move canvas origin to x and y
+    this.context.translate(this.x, this.y);
+
+    // rotate sprite based on direction
+    this.context.scale(this.lastDirection, 1);
+
+    // draw player
+    this.context.drawImage(this.playerImg, -this.width / 2, -this.height / 2, this.width, this.height);
+
+    // reset any remaining transform call
+    this.context.resetTransform();
   }
 }
 
