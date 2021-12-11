@@ -119,6 +119,7 @@ body {
   font-weight: lighter;
   font-size: 1em;
 }
+
 .breadcrumb {
   margin: 1vw 3vw;
   align-items: center;
@@ -170,6 +171,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 }
+
 .season_column:hover {
   box-shadow: 2px 2px 20px #97ce4c;
   border-color: #97ce4c;
