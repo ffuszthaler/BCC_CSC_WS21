@@ -23,9 +23,21 @@ class Player extends GameObject {
 
   init() {
     document.addEventListener('keydown', (e) => {
-      // prevents scrolling
-      e.preventDefault();
       this.currentKeys[e.code] = true;
+
+      // prevents scrolling if one of these keys is pressed
+      if (
+        this.currentKeys['ArrowUp'] === true ||
+        this.currentKeys['KeyW'] === true ||
+        this.currentKeys['ArrowDown'] === true ||
+        this.currentKeys['KeyS'] === true ||
+        this.currentKeys['ArrowLeft'] === true ||
+        this.currentKeys['KeyA'] === true ||
+        this.currentKeys['ArrowRight'] === true ||
+        this.currentKeys['KeyD'] === true
+      ) {
+        e.preventDefault();
+      }
     });
 
     document.addEventListener('keyup', (e) => {
@@ -78,6 +90,14 @@ class Player extends GameObject {
       this.dx = 1;
     } else {
       this.dx = 0;
+    }
+
+    // speed boost
+    if (this.currentKeys['Space'] === true) {
+      // 1.5x of normal speed
+      this.velocity = 0.45;
+    } else {
+      this.velocity = 0.3;
     }
 
     // save last view direction
