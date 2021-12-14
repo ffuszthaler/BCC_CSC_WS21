@@ -11,7 +11,7 @@ But most things resize according to screen width.
 Images are compressed.
 
 I hope this thing works, thank you and till we meet again.
-Florian Fußthaer, c211008
+Florian Fußthaler, c211008
 
 ---
 
