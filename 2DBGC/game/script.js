@@ -1,6 +1,7 @@
 import Player from './Player.js';
 import Collectible from './Collectible.js';
 import RandomDispatcher, { randomNumberBetween } from './RandomDispatcher.js';
+import PointsDisplay from './PointsDisplay.js';
 
 // global variables
 let context;
@@ -8,6 +9,7 @@ let lastTickTimestamp;
 let player;
 let collectibles = [];
 let gameObjects = [];
+let pointsDisplay;
 
 // config object
 const CONFIG = {
@@ -40,17 +42,21 @@ const init = () => {
     gameObjects.push(randomCollectible);
   }, dispatcherOptions);
 
+  // create points display
+  pointsDisplay = new PointsDisplay(context, CONFIG.width - 30, 30);
+  gameObjects.push(pointsDisplay);
+
   // time since start of script execution
   lastTickTimestamp = performance.now();
 
   gameLoop();
 };
 
+// self explanatory
 let checkCollisionBetween = (gameObjectA, gameObjectB) => {
   let bbA = gameObjectA.getBoundingBox();
   let bbB = gameObjectB.getBoundingBox();
   if (bbA.x < bbB.x + bbB.w && bbA.x + bbA.w > bbB.x && bbA.y < bbB.y + bbB.h && bbA.y + bbA.h > bbB.y) {
-    // collision happened
     return true;
   } else return false;
 };
@@ -62,20 +68,20 @@ const update = (timePassedSinceLastRender) => {
   });
 
   // check for collisions between collectibles and player
+  let removeItems = [];
   collectibles.forEach((collectible) => {
-    let isColliding = checkCollisionBetween(player, collectible);
-    collectible.isColliding = isColliding;
+    if (checkCollisionBetween(player, collectible)) {
+      // collision happened
+      removeItems.push(collectible);
+      pointsDisplay.increase();
+    }
   });
 
   // remove colliding collectibles from arrays
-  collectibles
-    .filter((collectible) => {
-      return collectible.isColliding == true;
-    })
-    .forEach((collectible) => {
-      collectibles.splice(collectibles.indexOf(collectible), 1);
-      gameObjects.splice(gameObjects.indexOf(collectible), 1);
-    });
+  removeItems.forEach((removeItem) => {
+    collectibles.splice(collectibles.indexOf(removeItem), 1);
+    gameObjects.splice(gameObjects.indexOf(removeItem), 1);
+  });
 };
 
 // renders to the canvas
