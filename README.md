@@ -1,6 +1,6 @@
 # BCC_WS21
 
-Includes code written during the lectures and additional challenges.
+Includes code written during lectures and additional challenges.
 
 Feel free to take a look and copy what you need.
 
@@ -9,3 +9,5 @@ Feel free to take a look and copy what you need.
 [Play Text Adventure](https://ffuszthaler.github.io/BCC_WS21/CSC/text-adventure/)
 
 [See IWT Implementation Online](https://ffuszthaler.github.io/BCC_WS21/IWT/implementation/)
+
+[Play Game from 2DBGC](https://ffuszthaler.github.io/BCC_WS21/2DBGC/game/)
