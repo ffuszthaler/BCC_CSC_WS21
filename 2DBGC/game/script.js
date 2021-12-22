@@ -15,6 +15,13 @@ let pointsDisplay;
 const CONFIG = {
   width: 800,
   height: 600,
+  debug: false,
+};
+
+// remove collectibles from arrays
+let removeCollectible = (collectible) => {
+  collectibles.splice(collectibles.indexOf(collectible), 1);
+  gameObjects.splice(gameObjects.indexOf(collectible), 1);
 };
 
 // initializes game, canvas, ...
@@ -40,6 +47,11 @@ const init = () => {
 
     collectibles.push(randomCollectible);
     gameObjects.push(randomCollectible);
+
+    randomCollectible.onRemove(() => {
+      // remove me
+      removeCollectible(randomCollectible);
+    });
   }, dispatcherOptions);
 
   // create points display
@@ -79,8 +91,7 @@ const update = (timePassedSinceLastRender) => {
 
   // remove colliding collectibles from arrays
   removeItems.forEach((removeItem) => {
-    collectibles.splice(collectibles.indexOf(removeItem), 1);
-    gameObjects.splice(gameObjects.indexOf(removeItem), 1);
+    removeCollectible(removeItem);
   });
 };
 

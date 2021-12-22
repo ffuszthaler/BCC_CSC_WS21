@@ -94,7 +94,7 @@ class Player extends GameObject {
 
     // speed boost
     if (this.currentKeys['Space'] === true) {
-      // 1.5x of normal speed
+      // 1.5x of normal speed (0.3)
       this.velocity = 0.45;
     } else {
       this.velocity = 0.3;
@@ -117,12 +117,21 @@ class Player extends GameObject {
     // change state depending on movement speed
     this.state = this.dx === 0 && this.dy === 0 ? 'idle' : 'run';
 
+    // correct velocity for moving diagonally
+    if (this.dx !== 0 && this.dy !== 0) {
+      this.dx /= Math.hypot(this.dx, this.dy);
+      this.dy /= Math.hypot(this.dx, this.dy);
+    }
+
     // calculate new position
     this.x += timePassedSinceLastRender * this.dx * this.velocity;
     this.y += timePassedSinceLastRender * this.dy * this.velocity;
   }
 
   render() {
+    // run render function from parent class
+    super.render();
+
     // move canvas origin to x and y
     this.context.translate(this.x, this.y);
 
@@ -161,6 +170,21 @@ class Player extends GameObject {
     };
 
     return coords;
+  }
+
+  getBoundingBox() {
+    let bb = super.getBoundingBox();
+
+    // shrinking bounding box of player to fit sprite
+    // width: 20% | 60% | 20% = 100%
+    bb.w = bb.w * 0.6;
+    bb.x = bb.x + this.width * 0.2;
+
+    // height: 10% | 80% | 10% = 100%
+    bb.h = bb.h * 0.8;
+    bb.y = bb.y + this.height * 0.1;
+
+    return bb;
   }
 }
 

@@ -17,7 +17,15 @@ class GameObject {
 
   update() {}
 
-  render() {}
+  render() {
+    // draw bounding box rectangle if debug flag is set
+    if (this.CONFIG.debug) {
+      let bb = this.getBoundingBox();
+      this.context.translate(bb.x, bb.y);
+      this.context.strokeRect(0, 0, bb.w, bb.h);
+      this.context.resetTransform();
+    }
+  }
 
   getBoundingBox() {
     return {
