@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(180deg, #7fc5c9, #deabbe);
+  text-align: center;
+}
+
+#score {
+  display: none;
+  padding-top: 120px;
+  font-family: verdana;
+  font-size: 2em;
+  position: relative;
+  color: #fff;
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 25px;
+}
