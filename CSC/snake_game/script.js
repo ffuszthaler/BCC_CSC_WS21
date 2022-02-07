@@ -26,7 +26,9 @@ GLOBAL.snake = new Snake(20, 20, 20);
 GLOBAL.apple = new Collectible(20, 20, 20, 20, 'red');
 
 const gameLoop = () => {
-  setInterval(show, 1000 / 5); // here 5 is our fps value
+  // slow down game to a lower framerate
+  // to be more like the original
+  setInterval(show, 1000 / 5); // fps: 5
 };
 
 const show = () => {
@@ -44,7 +46,6 @@ const update = () => {
 const render = () => {
   // background
   createRect(0, 0, GLOBAL.canvas.width, GLOBAL.canvas.height, 'black');
-  createRect(0, 0, GLOBAL.canvas.width, GLOBAL.canvas.height);
 
   // render snake according to its size
   for (let i = 0; i < GLOBAL.snake.tail.length; i++) {
