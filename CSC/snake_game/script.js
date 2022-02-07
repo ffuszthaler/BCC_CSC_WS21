@@ -20,7 +20,7 @@ GLOBAL.canvas = document.getElementById('canvas');
 GLOBAL.ctx = canvas.getContext('2d');
 
 // our snake
-GLOBAL.snake = new Snake(20, 20, 20);
+GLOBAL.snake = new Snake(40, 40, 20);
 
 // initial apple
 GLOBAL.apple = new Collectible(20, 20, 20, 20, 'red');
@@ -41,6 +41,14 @@ const update = () => {
 
   GLOBAL.snake.update();
   GLOBAL.snake.eatApple();
+
+  // snake eats itself
+  // let head = GLOBAL.snake.tail[0];
+  // for (let i = 1; i < GLOBAL.snake.tail.length; i++) {
+  //   if (head.x == GLOBAL.snake.tail[i].x && head.y == GLOBAL.snake.tail[i].y) {
+  //     console.log('eat');
+  //   }
+  // }
 };
 
 const render = () => {
@@ -59,9 +67,9 @@ const render = () => {
   }
 
   // score counter
-  GLOBAL.ctx.font = '20px Arial';
-  GLOBAL.ctx.fillStyle = '#00FF42';
-  GLOBAL.ctx.fillText('Score: ' + (GLOBAL.snake.tail.length - 1), GLOBAL.canvas.width - 120, 18);
+  GLOBAL.ctx.font = 'bold 20px Arial';
+  GLOBAL.ctx.fillStyle = '#FFFFFF';
+  GLOBAL.ctx.fillText('Score: ' + (GLOBAL.snake.tail.length - 1), 10, 30);
 
   // render initial apple
   GLOBAL.apple.render();
