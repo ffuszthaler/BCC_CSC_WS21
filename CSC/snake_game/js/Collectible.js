@@ -10,23 +10,8 @@ class Collectible {
 
     this.color = color;
 
-    let isTouching;
-
-    while (true) {
-      isTouching = false;
-      this.x = Math.floor((Math.random() * GLOBAL.canvas.width) / GLOBAL.snake.size) * GLOBAL.snake.size;
-      this.y = Math.floor((Math.random() * GLOBAL.canvas.height) / GLOBAL.snake.size) * GLOBAL.snake.size;
-
-      for (let i = 0; i < GLOBAL.snake.tail.length; i++) {
-        if (this.x == GLOBAL.snake.tail[i].x && this.y == GLOBAL.snake.tail[i].y) {
-          isTouching = true;
-        }
-      }
-
-      if (!isTouching) {
-        break;
-      }
-    }
+    this.x = Math.floor((Math.random() * GLOBAL.canvas.width) / GLOBAL.snake.size) * GLOBAL.snake.size;
+    this.y = Math.floor((Math.random() * GLOBAL.canvas.height) / GLOBAL.snake.size) * GLOBAL.snake.size;
   }
 
   render() {
