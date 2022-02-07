@@ -50,6 +50,7 @@ const update = () => {
 
   // snake eats itself
   let head = GLOBAL.snake.tail[0];
+  // start at index 1 eg. first real tail part
   for (let i = 1; i < GLOBAL.snake.tail.length; i++) {
     if (head.x === GLOBAL.snake.tail[i].x && head.y === GLOBAL.snake.tail[i].y) {
       console.log('dead');
