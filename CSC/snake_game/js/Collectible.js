@@ -14,17 +14,14 @@ class Collectible {
 
     while (true) {
       isTouching = false;
-      this.x = Math.floor((Math.random() * canvas.width) / GLOBAL.snake.size) * GLOBAL.snake.size;
-      this.y = Math.floor((Math.random() * canvas.height) / GLOBAL.snake.size) * GLOBAL.snake.size;
+      this.x = Math.floor((Math.random() * GLOBAL.canvas.width) / GLOBAL.snake.size) * GLOBAL.snake.size;
+      this.y = Math.floor((Math.random() * GLOBAL.canvas.height) / GLOBAL.snake.size) * GLOBAL.snake.size;
 
       for (let i = 0; i < GLOBAL.snake.tail.length; i++) {
         if (this.x == GLOBAL.snake.tail[i].x && this.y == GLOBAL.snake.tail[i].y) {
           isTouching = true;
         }
       }
-
-      this.size = GLOBAL.snake.size;
-      this.color = 'red';
 
       if (!isTouching) {
         break;
