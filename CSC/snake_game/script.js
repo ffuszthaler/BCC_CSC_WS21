@@ -7,7 +7,7 @@ import Collectible from './js/Collectible.js';
 let playButton = document.getElementById('playButton');
 let title = document.getElementById('title');
 
-// set up main menu
+// set up start screen
 playButton.addEventListener('click', () => {
   gameLoop();
 
@@ -25,10 +25,6 @@ GLOBAL.snake = new Snake(20, 20, 20);
 // initial apple
 GLOBAL.apple = new Collectible(20, 20, 20, 20, 'red');
 
-// window.onload = () => {
-//   gameLoop();
-// };
-
 const gameLoop = () => {
   setInterval(show, 1000 / 5); // here 5 is our fps value
 };
@@ -40,8 +36,8 @@ const show = () => {
 
 const update = () => {
   GLOBAL.ctx.clearRect(0, 0, GLOBAL.canvas.width, GLOBAL.canvas.height);
-  GLOBAL.snake.update();
 
+  GLOBAL.snake.update();
   GLOBAL.snake.eatApple();
 };
 
