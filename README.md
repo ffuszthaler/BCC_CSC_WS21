@@ -11,3 +11,5 @@ Feel free to take a look and copy what you need.
 [See IWT Implementation Online](https://ffuszthaler.github.io/BCC_WS21/IWT/implementation/)
 
 [Play Game from 2DBGC](https://ffuszthaler.github.io/BCC_WS21/2DBGC/game/)
+
+[Play Snake](https://ffuszthaler.github.io/BCC_WS21/CSC/snake_game/)
