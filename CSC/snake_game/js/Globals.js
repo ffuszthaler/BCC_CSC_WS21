@@ -3,6 +3,7 @@ const GLOBAL = {
   ctx: undefined,
   snake: undefined,
   apple: undefined,
+  actors: [],
 };
 
 export default GLOBAL;

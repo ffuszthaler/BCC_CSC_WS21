@@ -6,6 +6,7 @@ import Collectible from './js/Collectible.js';
 
 let playButton = document.getElementById('playButton');
 let title = document.getElementById('title');
+let dead = document.getElementById('dead');
 
 // set up start screen
 playButton.addEventListener('click', () => {
@@ -15,12 +16,15 @@ playButton.addEventListener('click', () => {
   title.style.display = 'none';
 });
 
+GLOBAL.actors = [];
+
 // set up canvas & context
 GLOBAL.canvas = document.getElementById('canvas');
 GLOBAL.ctx = canvas.getContext('2d');
 
 // our snake
 GLOBAL.snake = new Snake(40, 40, 20);
+GLOBAL.actors.push(GLOBAL.snake);
 
 // initial apple
 GLOBAL.apple = new Collectible(20, 20, 20, 20, 'red');
@@ -39,16 +43,25 @@ const show = () => {
 const update = () => {
   GLOBAL.ctx.clearRect(0, 0, GLOBAL.canvas.width, GLOBAL.canvas.height);
 
-  GLOBAL.snake.update();
-  GLOBAL.snake.eatApple();
+  GLOBAL.actors.forEach((actor) => {
+    actor.update();
+    actor.eatApple();
+  });
 
   // snake eats itself
-  // let head = GLOBAL.snake.tail[0];
-  // for (let i = 1; i < GLOBAL.snake.tail.length; i++) {
-  //   if (head.x == GLOBAL.snake.tail[i].x && head.y == GLOBAL.snake.tail[i].y) {
-  //     console.log('eat');
-  //   }
-  // }
+  let head = GLOBAL.snake.tail[0];
+  for (let i = 1; i < GLOBAL.snake.tail.length; i++) {
+    if (head.x == GLOBAL.snake.tail[i].x && head.y == GLOBAL.snake.tail[i].y) {
+      console.log('dead');
+      // GLOBAL.actors.splice(0, 1);
+    }
+  }
+
+  // if the snake is dead, hide game, show death message
+  if (GLOBAL.actors.length === 0) {
+    GLOBAL.canvas.style.display = 'none';
+    dead.style.display = 'block';
+  }
 };
 
 const render = () => {

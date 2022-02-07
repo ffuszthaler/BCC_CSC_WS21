@@ -47,13 +47,17 @@ class Snake {
     let headTail = GLOBAL.snake.tail[GLOBAL.snake.tail.length - 1];
 
     if (headTail.x == -GLOBAL.snake.size) {
-      headTail.x = GLOBAL.canvas.width - GLOBAL.snake.size;
+      // headTail.x = GLOBAL.canvas.width - GLOBAL.snake.size;
+      GLOBAL.actors.splice(0, 1);
     } else if (headTail.x == GLOBAL.canvas.width) {
-      headTail.x = 0;
+      // headTail.x = 0;
+      GLOBAL.actors.splice(0, 1);
     } else if (headTail.y == -GLOBAL.snake.size) {
-      headTail.y = GLOBAL.canvas.height - GLOBAL.snake.size;
+      // headTail.y = GLOBAL.canvas.height - GLOBAL.snake.size;
+      GLOBAL.actors.splice(0, 1);
     } else if (headTail.y == GLOBAL.canvas.height) {
-      headTail.y = 0;
+      // headTail.y = 0;
+      GLOBAL.actors.splice(0, 1);
     }
   }
 
