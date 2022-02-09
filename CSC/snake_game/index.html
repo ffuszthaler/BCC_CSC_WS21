@@ -3,40 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Snake</title>
-    <style>
-      body {
-        margin: 0px;
-        padding: 0px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      canvas {
-        display: none;
-        box-shadow: black 20px 10px 50px;
-        border-radius: 25px;
-      }
-
-      #deathMsg {
-        display: none;
-      }
-
-      #restart {
-        display: none;
-      }
-    </style>
   </head>
 
   <body>
-    <h1>Snake</h1>
-    <button id="start">Start</button>
+    <h1 id="logo">Snake</h1>
+    <button class="button" id="start">Ready?</button>
     <h1 id="deathMsg">You Died :(</h1>
-    <button id="restart">Restart</button>
+    <button class="button" id="restart">Restart</button>
 
-    <canvas width="400" height="400" />
+    <canvas width="400" height="400"></canvas>
+
+    <div id="instructions">
+      <h2>How to move: WASD / Arrow keys</h2>
+      <h2>Gain points by eating apples, try to evade the walls and yourself!</h2>
+    </div>
 
     <script src="./script.js"></script>
   </body>

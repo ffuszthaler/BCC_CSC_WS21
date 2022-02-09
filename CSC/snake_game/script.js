@@ -2,6 +2,7 @@ const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
 let startButton = document.getElementById('start');
+let instructions = document.getElementById('instructions');
 let restartButton = document.getElementById('restart');
 let deathMsg = document.getElementById('deathMsg');
 
@@ -33,7 +34,8 @@ let yVelocity = 0;
 
 let score = 0;
 
-// const gulpSound = new Audio('gulp.mp3');
+const eat = new Audio('./sound/eat.wav');
+const over = new Audio('./sound/over.wav');
 
 //game loop
 function drawGame() {
@@ -46,6 +48,7 @@ function drawGame() {
   let result = isGameOver();
 
   if (result) {
+    over.play();
     // hide game & show death message
     canvas.style.display = 'none';
     deathMsg.style.display = 'block';
@@ -57,18 +60,11 @@ function drawGame() {
 
   clearScreen();
 
-  // self-explanatory
   checkAppleCollision();
+
   drawApple();
   drawSnake();
   drawScore();
-
-  // if (score > 5) {
-  //   speed = 9;
-  // }
-  // if (score > 10) {
-  //   speed = 11;
-  // }
 
   // lower the game speed
   setTimeout(drawGame, 1000 / speed);
@@ -103,28 +99,26 @@ function isGameOver() {
   }
 
   // if game is over, display it
-  if (gameOver) {
-    ctx.fillStyle = 'white';
-    ctx.font = '50px Arial';
+  // if (gameOver) {
+  //   ctx.fillStyle = 'white';
+  //   ctx.font = '50px Arial';
 
-    ctx.fillText('Game Over!', canvas.width / 6.5, canvas.height / 2);
-  }
-
-  console.log(gameOver);
+  //   ctx.fillText('Game Over!', canvas.width / 6.5, canvas.height / 2);
+  // }
 
   return gameOver;
 }
 
 // draw the score
 function drawScore() {
-  ctx.fillStyle = 'white';
-  ctx.font = '20px Arial';
-  ctx.fillText('Score: ' + score, 10, 25);
+  ctx.fillStyle = 'black';
+  ctx.font = 'bold 20px Arial';
+  ctx.fillText('Pts: ' + score, 10, 25);
 }
 
 // clear screen before new frame
 function clearScreen() {
-  ctx.fillStyle = 'black';
+  ctx.fillStyle = 'white';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
@@ -173,7 +167,7 @@ function checkAppleCollision() {
     score++;
 
     // play eat sound
-    // gulpSound.play();
+    eat.play();
   }
 }
 
@@ -215,6 +209,7 @@ startButton.addEventListener('click', () => {
 
   // hide start button afterwards
   startButton.style.display = 'none';
+  instructions.style.display = 'block';
   canvas.style.display = 'block';
 });
 
