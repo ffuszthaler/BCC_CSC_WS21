@@ -1,110 +1,224 @@
-import GLOBAL from './js/Globals.js';
-import { createRect } from './js/Util.js';
+const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d');
 
-import Snake from './js/Snake.js';
-import Collectible from './js/Collectible.js';
+let startButton = document.getElementById('start');
+let restartButton = document.getElementById('restart');
+let deathMsg = document.getElementById('deathMsg');
 
-let playButton = document.getElementById('playButton');
-let title = document.getElementById('title');
-let dead = document.getElementById('dead');
+class SnakePart {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
 
-// set up start screen
-playButton.addEventListener('click', () => {
-  gameLoop();
+let speed = 7;
 
-  playButton.style.display = 'none';
-  title.style.display = 'none';
-});
+let tileCount = 20;
+let tileSize = canvas.width / tileCount - 2;
 
-GLOBAL.actors = [];
+let headX = 10;
+let headY = 10;
+const snakeParts = [];
+let tailLength = 2;
 
-// set up canvas & context
-GLOBAL.canvas = document.getElementById('canvas');
-GLOBAL.ctx = canvas.getContext('2d');
+let appleX = 5;
+let appleY = 5;
 
-// our snake
-GLOBAL.snake = new Snake(40, 40, 20);
-GLOBAL.actors.push(GLOBAL.snake);
+let inputsXVelocity = 0;
+let inputsYVelocity = 0;
 
-// initial apple
-GLOBAL.apple = new Collectible(20, 20, 20, 20, 'red');
+let xVelocity = 0;
+let yVelocity = 0;
 
-const gameLoop = () => {
-  // slow down game to a lower framerate
-  // to be more like the original
-  setInterval(show, 1000 / 5); // fps: 5
-};
+let score = 0;
 
-const show = () => {
-  update();
-  render();
-};
+// const gulpSound = new Audio('gulp.mp3');
 
-const update = () => {
-  GLOBAL.ctx.clearRect(0, 0, GLOBAL.canvas.width, GLOBAL.canvas.height);
+//game loop
+function drawGame() {
+  xVelocity = inputsXVelocity;
+  yVelocity = inputsYVelocity;
 
-  GLOBAL.actors.forEach((actor) => {
-    actor.update();
-    actor.eatApple();
-  });
+  changeSnakePosition();
+
+  // if player is dead
+  let result = isGameOver();
+
+  if (result) {
+    // hide game & show death message
+    canvas.style.display = 'none';
+    deathMsg.style.display = 'block';
+
+    // show restart button
+    restartButton.style.display = 'block';
+    return;
+  }
+
+  clearScreen();
+
+  // self-explanatory
+  checkAppleCollision();
+  drawApple();
+  drawSnake();
+  drawScore();
+
+  // if (score > 5) {
+  //   speed = 9;
+  // }
+  // if (score > 10) {
+  //   speed = 11;
+  // }
+
+  // lower the game speed
+  setTimeout(drawGame, 1000 / speed);
+}
+
+function isGameOver() {
+  let gameOver = false;
+
+  if (yVelocity === 0 && xVelocity === 0) {
+    return false;
+  }
+
+  //walls
+  if (headX < 0) {
+    gameOver = true;
+  } else if (headX === tileCount) {
+    gameOver = true;
+  } else if (headY < 0) {
+    gameOver = true;
+  } else if (headY === tileCount) {
+    gameOver = true;
+  }
 
   // snake eats itself
-  // start at index 1 eg. first real tail part
-  for (let i = 1; i < GLOBAL.snake.tail.length; i++) {
-    if (GLOBAL.snake.tail[0].x === GLOBAL.snake.tail[i].x && GLOBAL.snake.tail[0].y === GLOBAL.snake.tail[i].y) {
-      console.log('head: ', GLOBAL.snake.tail[0], 'body: ', GLOBAL.snake.tail);
-      // GLOBAL.actors.splice(0, 1);
+  for (let i = 0; i < snakeParts.length; i++) {
+    let part = snakeParts[i];
+
+    if (part.x === headX && part.y === headY) {
+      gameOver = true;
+      break;
     }
   }
 
-  // if the snake is dead, hide game, show death message
-  if (GLOBAL.actors.length === 0) {
-    GLOBAL.canvas.style.display = 'none';
-    dead.style.display = 'block';
-  }
-};
+  // if game is over, display it
+  if (gameOver) {
+    ctx.fillStyle = 'white';
+    ctx.font = '50px Arial';
 
-const render = () => {
-  // background
-  createRect(0, 0, GLOBAL.canvas.width, GLOBAL.canvas.height, 'black');
-
-  // render snake according to its size
-  for (let i = 0; i < GLOBAL.snake.tail.length; i++) {
-    createRect(
-      GLOBAL.snake.tail[i].x + 2.5,
-      GLOBAL.snake.tail[i].y + 2.5,
-      GLOBAL.snake.size - 5,
-      GLOBAL.snake.size - 5,
-      'white'
-    );
+    ctx.fillText('Game Over!', canvas.width / 6.5, canvas.height / 2);
   }
 
-  // score counter
-  GLOBAL.ctx.font = 'bold 20px Arial';
-  GLOBAL.ctx.fillStyle = '#FFFFFF';
-  GLOBAL.ctx.fillText('Score: ' + (GLOBAL.snake.tail.length - 1), 10, 30);
+  console.log(gameOver);
 
-  // render initial apple
-  GLOBAL.apple.render();
-};
+  return gameOver;
+}
 
-// allow only one input when pressing
-window.addEventListener('keydown', (event) => {
-  if (event.code == 'KeyA' && GLOBAL.snake.rotateX != 1) {
-    // left
-    GLOBAL.snake.rotateX = -1;
-    GLOBAL.snake.rotateY = 0;
-  } else if (event.code == 'KeyW' && GLOBAL.snake.rotateY != 1) {
-    // up
-    GLOBAL.snake.rotateX = 0;
-    GLOBAL.snake.rotateY = -1;
-  } else if (event.code == 'KeyD' && GLOBAL.snake.rotateX != -1) {
-    // right
-    GLOBAL.snake.rotateX = 1;
-    GLOBAL.snake.rotateY = 0;
-  } else if (event.code == 'KeyS' && GLOBAL.snake.rotateY != -1) {
-    // down
-    GLOBAL.snake.rotateX = 0;
-    GLOBAL.snake.rotateY = 1;
+// draw the score
+function drawScore() {
+  ctx.fillStyle = 'white';
+  ctx.font = '20px Arial';
+  ctx.fillText('Score: ' + score, 10, 25);
+}
+
+// clear screen before new frame
+function clearScreen() {
+  ctx.fillStyle = 'black';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+// draw the snake and every newly added tail part
+function drawSnake() {
+  ctx.fillStyle = 'green';
+  for (let i = 0; i < snakeParts.length; i++) {
+    let part = snakeParts[i];
+    ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize);
   }
+
+  //put an item at the end of the list next to the head
+  snakeParts.push(new SnakePart(headX, headY));
+  while (snakeParts.length > tailLength) {
+    // remove the furthest item from the snake parts if have more than our tail size.
+    snakeParts.shift();
+  }
+
+  // head will be a different color
+  ctx.fillStyle = 'orange';
+  ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize);
+}
+
+// make snake move
+function changeSnakePosition() {
+  headX = headX + xVelocity;
+  headY = headY + yVelocity;
+}
+
+// draw apple
+function drawApple() {
+  ctx.fillStyle = 'red';
+  ctx.fillRect(appleX * tileCount, appleY * tileCount, tileSize, tileSize);
+}
+
+// check for apple collision and calculate new apple position
+function checkAppleCollision() {
+  if (appleX === headX && appleY == headY) {
+    appleX = Math.floor(Math.random() * tileCount);
+    appleY = Math.floor(Math.random() * tileCount);
+
+    // make snake bigger
+    tailLength++;
+
+    // increase score
+    score++;
+
+    // play eat sound
+    // gulpSound.play();
+  }
+}
+
+// movement using either gamer keys or arrow keys
+document.body.addEventListener('keydown', (e) => {
+  if (e.code == 'ArrowUp' || e.code == 'KeyW') {
+    // if already the opposite, do nothing
+    if (inputsYVelocity == 1) return;
+    inputsYVelocity = -1;
+    inputsXVelocity = 0;
+  }
+
+  if (e.code == 'ArrowDown' || e.code == 'KeyS') {
+    // if already the opposite, do nothing
+    if (inputsYVelocity == -1) return;
+    inputsYVelocity = 1;
+    inputsXVelocity = 0;
+  }
+
+  if (e.code == 'ArrowLeft' || e.code == 'KeyA') {
+    // if already the opposite, do nothing
+    if (inputsXVelocity == 1) return;
+    inputsYVelocity = 0;
+    inputsXVelocity = -1;
+  }
+
+  if (e.code == 'ArrowRight' || e.code == 'KeyD') {
+    // if already the opposite, do nothing
+    if (inputsXVelocity == -1) return;
+    inputsYVelocity = 0;
+    inputsXVelocity = 1;
+  }
+});
+
+// start button
+startButton.addEventListener('click', () => {
+  // start game
+  drawGame();
+
+  // hide start button afterwards
+  startButton.style.display = 'none';
+  canvas.style.display = 'block';
+});
+
+restartButton.addEventListener('click', () => {
+  // restart game
+  location.reload();
 });

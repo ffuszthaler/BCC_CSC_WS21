@@ -2,17 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
     <title>Snake</title>
-  </head>
-  <body>
-    <h1 id="title">Welcome to snake</h1>
-    <button id="playButton">Play</button>
-    <canvas id="canvas" width="400" height="400"></canvas>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 
-    <h1 id="dead">dead</h1>
-    <script type="module" src="./script.js"></script>
+      canvas {
+        display: none;
+        box-shadow: black 20px 10px 50px;
+        border-radius: 25px;
+      }
+
+      #deathMsg {
+        display: none;
+      }
+
+      #restart {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Snake</h1>
+    <button id="start">Start</button>
+    <h1 id="deathMsg">You Died :(</h1>
+    <button id="restart">Restart</button>
+
+    <canvas width="400" height="400" />
+
+    <script src="./script.js"></script>
   </body>
 </html>
