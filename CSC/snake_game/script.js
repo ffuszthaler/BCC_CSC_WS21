@@ -1,5 +1,5 @@
 const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext("2d");
+const ctx = canvas.getContext('2d');
 
 let startButton = document.getElementById('start');
 let instructions = document.getElementById('instructions');
@@ -76,7 +76,7 @@ function drawGame() {
   let result = isGameOver();
 
   if (result) {
-    // play gameover sound
+    // play game over sound
     over.play();
 
     // remove keyboard input
@@ -226,7 +226,7 @@ const keyDown = (e) => {
     inputsYVelocity = 0;
     inputsXVelocity = 1;
   }
-}
+};
 
 // movement event listener
 document.body.addEventListener('keydown', keyDown);
