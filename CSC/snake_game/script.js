@@ -1,5 +1,5 @@
 const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext("2d");
 
 let startButton = document.getElementById('start');
 let instructions = document.getElementById('instructions');
@@ -20,6 +20,7 @@ let tileSize = canvas.width / tileCount - 2;
 
 let headX = 10;
 let headY = 10;
+
 const snakeParts = [];
 let tailLength = 2;
 
@@ -45,26 +46,27 @@ function drawGame() {
   xVelocity = inputsXVelocity;
   yVelocity = inputsYVelocity;
 
-  //Was moving right and try to move left
+  // was moving right and try to move left
   if (previousXVelocity === 1 && xVelocity === -1) {
     xVelocity = previousXVelocity;
   }
 
-  //Was moving left and try to move right
+  // was moving left and try to move right
   if (previousXVelocity === -1 && xVelocity === 1) {
     xVelocity = previousXVelocity;
   }
 
-  //Was moving up and try to move down
+  // was moving up and try to move down
   if (previousYVelocity === -1 && yVelocity === 1) {
     yVelocity = previousYVelocity;
   }
 
-  //Was moving down and try to move up
+  // was moving down and try to move up
   if (previousYVelocity === 1 && yVelocity === -1) {
     yVelocity = previousYVelocity;
   }
 
+  // save previous direction
   previousXVelocity = xVelocity;
   previousYVelocity = yVelocity;
 
@@ -74,7 +76,12 @@ function drawGame() {
   let result = isGameOver();
 
   if (result) {
+    // play gameover sound
     over.play();
+
+    // remove keyboard input
+    document.body.removeEventListener('keydown', keyDown);
+
     // hide game & show death message
     canvas.style.display = 'none';
     deathMsg.style.display = 'block';
@@ -124,14 +131,6 @@ function isGameOver() {
     }
   }
 
-  // if game is over, display it
-  // if (gameOver) {
-  //   ctx.fillStyle = 'white';
-  //   ctx.font = '50px Arial';
-
-  //   ctx.fillText('Game Over!', canvas.width / 6.5, canvas.height / 2);
-  // }
-
   return gameOver;
 }
 
@@ -180,9 +179,10 @@ function drawApple() {
   ctx.fillRect(appleX * tileCount, appleY * tileCount, tileSize, tileSize);
 }
 
-// check for apple collision and calculate new apple position
+// check for apple collision
 function checkAppleCollision() {
   if (appleX === headX && appleY == headY) {
+    // random apple position
     appleX = Math.floor(Math.random() * tileCount);
     appleY = Math.floor(Math.random() * tileCount);
 
@@ -198,35 +198,38 @@ function checkAppleCollision() {
 }
 
 // movement using either gamer keys or arrow keys
-document.body.addEventListener('keydown', (e) => {
+const keyDown = (e) => {
   if (e.code == 'ArrowUp' || e.code == 'KeyW') {
     // if already the opposite, do nothing
-    if (inputsYVelocity == 1) return;
+    // if (inputsYVelocity == 1) return;
     inputsYVelocity = -1;
     inputsXVelocity = 0;
   }
 
   if (e.code == 'ArrowDown' || e.code == 'KeyS') {
     // if already the opposite, do nothing
-    if (inputsYVelocity == -1) return;
+    // if (inputsYVelocity == -1) return;
     inputsYVelocity = 1;
     inputsXVelocity = 0;
   }
 
   if (e.code == 'ArrowLeft' || e.code == 'KeyA') {
     // if already the opposite, do nothing
-    if (inputsXVelocity == 1) return;
+    // if (inputsXVelocity == 1) return;
     inputsYVelocity = 0;
     inputsXVelocity = -1;
   }
 
   if (e.code == 'ArrowRight' || e.code == 'KeyD') {
     // if already the opposite, do nothing
-    if (inputsXVelocity == -1) return;
+    // if (inputsXVelocity == -1) return;
     inputsYVelocity = 0;
     inputsXVelocity = 1;
   }
-});
+}
+
+// movement event listener
+document.body.addEventListener('keydown', keyDown);
 
 // start button
 startButton.addEventListener('click', () => {
@@ -239,6 +242,7 @@ startButton.addEventListener('click', () => {
   canvas.style.display = 'block';
 });
 
+// restart button
 restartButton.addEventListener('click', () => {
   // restart game
   location.reload();
