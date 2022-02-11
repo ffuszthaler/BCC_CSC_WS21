@@ -37,10 +37,36 @@ let score = 0;
 const eat = new Audio('./sound/eat.wav');
 const over = new Audio('./sound/over.wav');
 
+let previousXVelocity = 0;
+let previousYVelocity = 0;
+
 //game loop
 function drawGame() {
   xVelocity = inputsXVelocity;
   yVelocity = inputsYVelocity;
+
+  //Was moving right and try to move left
+  if (previousXVelocity === 1 && xVelocity === -1) {
+    xVelocity = previousXVelocity;
+  }
+
+  //Was moving left and try to move right
+  if (previousXVelocity === -1 && xVelocity === 1) {
+    xVelocity = previousXVelocity;
+  }
+
+  //Was moving up and try to move down
+  if (previousYVelocity === -1 && yVelocity === 1) {
+    yVelocity = previousYVelocity;
+  }
+
+  //Was moving down and try to move up
+  if (previousYVelocity === 1 && yVelocity === -1) {
+    yVelocity = previousYVelocity;
+  }
+
+  previousXVelocity = xVelocity;
+  previousYVelocity = yVelocity;
 
   changeSnakePosition();
 
