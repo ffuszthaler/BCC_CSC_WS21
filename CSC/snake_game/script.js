@@ -89,7 +89,7 @@ function drawGame() {
 
     // show everything death related
     deathMsg.style.display = 'block';
-    scoreMsg.innerText = 'Your Score: ' + score;
+    scoreMsg.innerText = 'Score: ' + score;
     scoreMsg.style.display = 'block';
     restartButton.style.display = 'block';
     return;
