@@ -83,13 +83,14 @@ function drawGame() {
     // remove keyboard input
     document.body.removeEventListener('keydown', keyDown);
 
-    // hide game & show death message
+    // hide game & instructions
     canvas.style.display = 'none';
+    instructions.style.display = 'none';
+
+    // show everything death related
     deathMsg.style.display = 'block';
     scoreMsg.innerText = 'Your Score: ' + score;
     scoreMsg.style.display = 'block';
-
-    // show restart button
     restartButton.style.display = 'block';
     return;
   }
