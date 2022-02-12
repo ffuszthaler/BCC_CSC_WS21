@@ -7,10 +7,6 @@ html {
 body {
   margin: 0px;
   padding: 0px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background: linear-gradient(180deg, #eea849, #f46b45);
 }
 
@@ -18,6 +14,14 @@ canvas {
   display: none;
   box-shadow: #f46b45 20px 10px 50px;
   border-radius: 25px;
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 #logo {
@@ -31,6 +35,10 @@ canvas {
 }
 
 #deathMsg {
+  display: none;
+}
+
+#scoreMsg {
   display: none;
 }
 

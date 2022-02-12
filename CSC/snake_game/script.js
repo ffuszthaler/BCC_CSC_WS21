@@ -5,6 +5,7 @@ let startButton = document.getElementById('start');
 let instructions = document.getElementById('instructions');
 let restartButton = document.getElementById('restart');
 let deathMsg = document.getElementById('deathMsg');
+let scoreMsg = document.getElementById('scoreMsg');
 
 class SnakePart {
   constructor(x, y) {
@@ -85,6 +86,8 @@ function drawGame() {
     // hide game & show death message
     canvas.style.display = 'none';
     deathMsg.style.display = 'block';
+    scoreMsg.innerText = 'Your Score: ' + score;
+    scoreMsg.style.display = 'block';
 
     // show restart button
     restartButton.style.display = 'block';
